@@ -18,7 +18,7 @@
 
 <body>
     <center><h1>Southern Australia Marine Park Network Boundaries</h1>
-    <p>The map below is an interactive display portraying the boundaries of Marine Park Networks on the coast of Southern Australia.</p>
+    <p>The map featured below is an interactive display portraying the boundaries of Marine Park Networks on the coast of Southern Australia.</p>
     </center>
 
     <div id="mapid"; style = "id-align:center"></div>
@@ -63,29 +63,14 @@
 		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 			layer.bringToFront();
 		}
-    
-    var geojson;
-        
-    function resetHighlight(e) {
-        geojson.resetStyle(e.target);
-		info.update();
-	}
-
-	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
 
 	function onEachFeature(feature, layer) {
 		layer.on({
 			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-			click: zoomToFeature
-		});
-	}
 
 		info.update(layer.feature.properties);
     
-    geojson = L.geoJson(MPA, {
+    var geojson = L.geoJson(MPA, {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map);
