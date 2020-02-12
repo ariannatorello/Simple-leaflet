@@ -32,3 +32,18 @@
 
 <script>
     var map = L.map('mapid').setView([-35.013511, 135.265231], 13);
+
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+    }).addTo(map);
+
+</script>
+    
+    <center>
+        <p>Created by Arianna Torello</p>
+        <p>GEOG 456 - 001 | 06 February 2020</p>
+    </center>
+    
+</body>
+    
+</html>
