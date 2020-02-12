@@ -37,6 +37,23 @@
         attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
     }).addTo(map);
     
+    // control that shows state info on hover
+    var info = L.control();
+    
+    info.onAdd = function (map) {
+	    this._div = L.DomUtil.create('div', 'info');
+	    this.update();
+	    return this._div;
+    };
+
+    info.update = function (props) {
+	    this._div.innerHTML = '<h4>South Australian Marine Parks</h4>' +  (props ?
+		'<b>' + props.resname + '</b><br />' + props.type
+		: 'Hover over a boundary');
+    };
+
+    info.addTo(map);
+	
     // Giving a nice color for the boundaries. 
     function style(feature) {
 		return {
