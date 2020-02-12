@@ -33,10 +33,61 @@
 <script>
     var map = L.map('mapid').setView([-35.013511, 135.265231], 6);
     
-    var geojson = L.geoJson(MPA).addTo(map);
-
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+    }).addTo(map);
+    
+    // Giving a nice color for the boundaries. 
+    function style(feature) {
+		return {
+            weight: 2,
+            opacity: 1,
+            color: '#7BB661',
+            dashArray: '3',
+            fillOpacity: 0.7,
+            fillColor: '#7BB661'
+        };
+    }
+    
+    // Creating the highlight feature so the boundary you scroll over is clarified.
+    function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+    
+    var geojson;
+        
+    function resetHighlight(e) {
+        geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+		info.update(layer.feature.properties);
+    
+    geojson = L.geoJson(MPA, {
+        style: style,
+        onEachFeature: onEachFeature
     }).addTo(map);
 
 </script>
