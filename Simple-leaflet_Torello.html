@@ -50,7 +50,7 @@
     info.update = function (props) {
 	    this._div.innerHTML = '<h4>South Australian Marine Parks</h4>' +  (props ?
 		'<b>' + props.resname + '</b><br />' + props.type
-		: <center>'Hover over a boundary'</center>);
+		: 'Hover over a boundary');
     };
 
     info.addTo(map);
