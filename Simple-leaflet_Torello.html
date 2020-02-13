@@ -46,9 +46,9 @@
 	    return this._div;
     };
 
-    info.update = function (MPA) {
-	    this._div.innerHTML = '<h4>South Australian Marine Parks</h4>' +  (MPA ?
-		'<b>' + MPA.features.properties.resname + '</b><br />'
+    info.update = function (features) {
+	    this._div.innerHTML = '<h4>South Australian Marine Parks</h4>' +  (features ?
+		'<b>' + features.properties.RESNAME + '</b><br />'
 		: 'Hover over a boundary');
     };
 
