@@ -18,7 +18,7 @@
 
 <body style="background-color: #F0EAD6;">
     <h1 align = "center", style="color: #7BB661"> Southern Australia Marine Park Network Boundaries</h1>
-    <p align = "center", style="color: #1B4D3E">The map featured below is an interactive display portraying the boundaries of Marine Park Networks on the coast of Southern Australia.</p>
+    <p align = "center", style="color: #1B4D3E">The map featured below is an interactive display portraying the boundaries of Marine Parks on the coast of Southern Australia.</p>
 
     <div id="mapid"; style = "id-align:center"></div>
     <style>
@@ -48,7 +48,7 @@
 
     info.update = function (props) {
 	    this._div.innerHTML = '<h4>South Australian Marine Parks</h4>' +  (props ?
-		'<b>' + features.properties.RESNAME + '</b><br />'
+		'<b>' + props.features.properties.RESNAME + '</b><br />'
 		: 'Hover over a boundary');
     };
 
