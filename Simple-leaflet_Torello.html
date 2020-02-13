@@ -48,7 +48,7 @@
 
     info.update = function (MPA) {
 	    this._div.innerHTML = '<h4>South Australian Marine Parks</h4>' +  (MPA ?
-		'<b>' + MPA.resname + '</b><br />'
+		'<b>' + MPA.features.properties.resname + '</b><br />'
 		: 'Hover over a boundary');
     };
 
